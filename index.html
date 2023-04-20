@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/styles.css">
+        <title>Weather App</title>
+    </head>
+    <body>
+        <div class="user-input-container">
+            <form action="#">
+                <div>
+                    <input type="text" id="user-location" name="user-location" value="" placeholder="Enter Location" required>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+
+            <div class="error-input-message"></div>
+        </div>
+
+        <div class="main">
+            <div class="user-main">
+                <div class="current-location-info"></div>
+                <div><button class="celsius-button" type="submit">Change to Celsius &#8451;</button></div>
+                <div><button class="fahrenheit-button" type="submit">Change to Fahrenheit &#8457;</button></div>
+            </div>
+
+            <div class="display-selected-forecast-day"></div>
+        </div>
+
+        <div class="display-forecast"></div>
+
+        <div class="display-hourly-forecast"></div>
+        <script src="main.js"></script>
+    </body>
+</html>
