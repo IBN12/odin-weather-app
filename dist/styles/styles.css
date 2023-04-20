@@ -1,0 +1,472 @@
+/* body - The entire body for the browser. */
+body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(#e66465, #9198e5);
+    background-repeat: no-repeat;
+    background-size: 100% 1200px;
+}
+
+/* * - All elements in the application. */
+*{
+    box-sizing: border-box;
+}
+
+/*************************************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************************/
+/* |fonts| */
+@font-face {
+    font-family: comfortaa;
+    src: url(../fonts/comfortaa/Comfortaa-Regular.ttf);
+}
+
+
+/*************************************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************************/
+/* |User Input Container Section| */
+.user-input-container{
+    /* border: 2px solid red; */
+    width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+}
+.user-input-container > form{
+    /* border: 2px solid pink; */
+    padding: 10px;
+    text-align: center;
+}
+.user-input-container > form > div{
+    /* border: 2px solid green; */
+    padding: 3px;
+}
+
+/* User input */
+#user-location{
+    width: 60%;
+    border: none;
+    border-bottom: 1px solid white;
+    padding: 5px 0 5px 0;
+    font-size: 18px;
+    background-color: inherit;
+    color: white;
+
+}
+#user-location:focus{
+    outline: none;
+}
+#user-location::placeholder{
+    color: white;
+}
+
+/* User Submit Button */
+.user-input-container > form > div:nth-child(2) > button{
+    padding: 5px 25px 5px 25px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #d8b4fe;
+    font-size: 15px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: white;
+    font-family: comfortaa ,system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+}
+
+.user-input-container > form > div:nth-child(2) > button:hover{
+    background-color: #c084fc;
+}
+.user-input-container > form > div:nth-child(2) > button:focus{
+    outline: none;
+}
+
+
+/*************************************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************************/
+/* |Main| */
+/* main will contain information about the current location (current-location-info), toggle button to change between fahrenheit and celsius (celsius-button and fahrenheit button),
+and a window to display the selected forecast day that the user clicked on (display-selected-forecast-day). */
+.main{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 1400px;
+    padding: 10px;
+    font-family: comfortaa ,system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: white;
+    font-weight: bold;
+}
+.main > div{
+    /* border: 1px solid blue; */
+    padding: 4px;
+}
+.main > div:nth-child(1){
+    height: 369px;
+}
+
+/* Main | User Main Section */
+/* The user main section will contain the current location info for the user 
+search and the ability to toggle between Celsius and Fahrenheit. */
+.user-main{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 170px 30px 1px;
+    gap: 5px;
+
+    /* border: 2px solid red; */
+    width: 400px;
+}
+.user-main > div{
+    /* border: 2px solid green; */
+}
+.current{
+    grid-row: 2 / 3;
+}
+.current > button{
+    height: 100%;
+    font-size: 18px;
+    color: white;
+    background-color: #d8b4fe;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: comfortaa ,system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin-left: 10px;
+}
+.current > button:hover{
+    background-color: #c084fc;
+}
+.current > button:focus{
+    outline: none;
+}
+
+/* User Main Section | Current Location Info */
+.current-location-info{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 30px);
+    gap: 10px;
+
+    padding: 10px;
+}
+.current-location-info > div{ /* Child items for the location info. */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+    gap: 7px;
+
+    /* border: 1px solid purple; */
+    /* padding: 5px; */
+}
+.current-location-info > div > div{ /* label and location data items inside each child item.*/
+    /* border: 1px solid orange; */
+}
+
+/*************************************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************************/
+/* |hide| */
+/* Hides certain objects, buttons, windows, etc. */
+.hide{
+    display: none;
+}
+
+/*************************************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************************/
+/* |hide-display| */
+/* will hide displays*/
+#hide-display{
+    display: none;
+}
+
+/*************************************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************************/
+/* |error-input-message| */
+.error-input-message{
+    /* border: 1px solid blue; */
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-family: comfortaa ,system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/*************************************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************************/
+/* |Display Forecast| */
+.display-forecast{ /* Main Parent */
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    gap: 10px;
+
+    /* border: 2px solid red; */
+    width: 700px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: white;
+    font-family: comfortaa, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: bold;
+    /* overflow-x:scroll; */
+}
+.display-forecast > div{ /* Main Parent Items*/
+    /* border: 2px solid green; */
+    /* padding: 10px; */
+}
+.display-forecast > div > div{ /* Children items inside the main parent items. */
+    /* border: 2px solid blue;  */
+    padding: 5px;
+}
+.display-forecast > div > div:nth-child(1) img[src]{
+    width: 100%; 
+    height: 100%;
+    cursor: pointer;
+}
+
+.display-forecast > div > div:nth-child(3) > div{ /* Weather condition child container inside the third child item.  */
+    /* border: 2px solid orange; */
+    padding: 10px;
+}
+
+.display-forecast > div > div:nth-child(4) > div{ /* Temperature item child container inside the fourth child item. */
+    /* border: 2px solid purple; */
+    padding: 10px;
+}
+
+/* Webkit-scrollbar for the display forecast data containers scroll bar. */
+.display-forecast::-webkit-scrollbar{
+    background-color: #0f172a;
+}
+.display-forecast::-webkit-scrollbar-thumb{
+    background-color: #d1d5db;
+    outline: 1px solid #57534e;
+    border-radius: 4px;
+}
+
+/*************************************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************************/
+/* |Display Hourly Forecast| */
+.display-hourly-forecast{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 3px;
+
+    /* border: 2px solid red; */
+    width: 1800px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    color: white;
+    font-family: comfortaa, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: bold;
+    /* padding: 10px; */
+}
+.display-hourly-forecast > div{ /* The containers children items */
+    /* border: 2px solid blue; */
+    padding: 10px;
+}
+.display-hourly-forecast > div > div{
+    /* border: 2px solid orange; */
+    padding: 10px;
+}
+
+/*************************************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************************/
+/* |Display Selected Forecast Day| */
+.display-selected-forecast-day{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+
+    width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+}
+.display-selected-forecast-day > div{
+    /* border: 1px solid green; */
+    /* padding: 10px; */
+}
+.display-selected-forecast-day > div > div{
+    /* border: 1px solid blue; */
+    padding: 5px;
+}
+
+.display-selected-forecast-day > div:nth-child(1){ /* Image Item */
+    grid-column: 1 / 2;
+    grid-row: 1 / 5;
+
+    height: 250px;
+}
+.display-selected-forecast-day > div:nth-child(3){
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+.display-selected-forecast-day > div:nth-child(4){
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+.display-selected-forecast-day > div:nth-child(8){
+    grid-column: 3 / 4;
+}
+.display-selected-forecast-day > div:nth-child(9){
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+
+.display-selected-forecast-day > div:nth-child(1) > img[src]{ /* Image-Weather Icon */
+    width: 100%;
+    height: 100%;
+}
+
+/*************************************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************************/
+/* |Location Condition Container| */
+/* .location-condition-container{
+    border: 2px solid purple;
+    width: 200px;
+}
+.location-condition-container > img[src]{
+    width: 100%;
+    height: 100%;
+} */
+
+
+/*************************************************************************************************************************************************************************/
+/*************************************************************************************************************************************************************************/
+/* |Mobile Devices and Desktop Minization Section| */
+
+/* Media-0 - Mobile Devices */
+@media only screen and (max-width: 600px){
+
+    /* |Body| */
+    body{
+        background-size: 100% 3000px;
+    }
+    
+    /* |User Input Container Section| */
+    .user-input-container{
+        width: 100%;
+    }
+    /* User Input Container| User Location */
+    #user-location{
+        width: 100%;
+    }
+
+    /* |Input Error Message| */
+    .error-input-message{
+        font-size: 17px;
+    }
+
+    /* |Main Section| */
+    .main{
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    .main > div:nth-child(1){
+        height: 240px;
+    }
+    /* Main | User Main */
+    .user-main{
+        width: 100%;
+    }
+
+    /* Main | Display Selected Forecast Day */
+    .display-selected-forecast-day{
+        width: 100%;
+    }
+    .display-selected-forecast-day > div:nth-child(1) { /* Image Container */
+        grid-column: 1 / 4;
+        grid-row: 1 / 2;
+    }
+    .display-selected-forecast-day > div:nth-child(2){ /* Name Container */
+        grid-column: 1 / 4;
+        grid-row: 2 / 3;
+    }
+    .display-selected-forecast-day > div:nth-child(3){ /* Region Container */ 
+        grid-column: 1 / 4;
+        grid-row: 3 / 4;
+    }
+    .display-selected-forecast-day > div:nth-child(4){ /* Country Container */
+        grid-column: 1 / 4;
+        grid-row: 4 / 5;
+    }
+    .display-selected-forecast-day > div:nth-child(5){ /* Temperature Container */
+        grid-column: 1 / 4;
+        grid-row: 5 / 6;
+    }
+    .display-selected-forecast-day > div:nth-child(6){ /* Hudmity Container */
+        grid-column: 1 / 4;
+        grid-row: 7 / 8;
+    }
+    .display-selected-forecast-day > div:nth-child(7){ /* Precipiation Container */
+        grid-column: 1 / 4;
+        grid-row: 8 / 9;
+    }
+    .display-selected-forecast-day > div:nth-child(8){ /* Wind Container */ 
+        grid-column: 1 / 4;
+        grid-row: 9 / 10;
+    }
+    .display-selected-forecast-day > div:nth-child(9){ /* Condition Container */ 
+        grid-column: 1 / 4;
+        grid-row: 10 / 11;
+    }
+    .display-selected-forecast-day > div > div{
+        text-align: center;
+    }
+
+    /* |Display Forecast Section| */
+    .display-forecast{
+        width: 100%;
+        overflow-x: scroll;
+    }
+    /* Webkit-scrollbar for the display forecast data containers scroll bar. */
+    .display-forecast::-webkit-scrollbar{
+        background-color: #0f172a;
+    }
+    .display-forecast::-webkit-scrollbar-thumb{
+        background-color: #d1d5db;
+        outline: 1px solid #57534e;
+        border-radius: 4px;
+    }
+    /* TODO: Study and edit the scroll bar for the '.display-forecast' container. */
+
+    /* |Display Hourly Forecast Section| */
+    .display-hourly-forecast{
+        grid-template-columns: repeat(8, 150px);
+        width: 100%;
+        overflow-x: scroll;
+    }
+    .display-hourly-forecast > div > div{
+        text-align: center;
+    }
+    /* TODO: Study and edit the Scroll bar for the '.display-hourly-forecast' container. */
+
+    /* Media-1 - For mobile devices with viewports smaller than 290px in width. */
+    @media only screen and (max-width: 300px){
+        /* |Main| */
+        .main{
+            font-size: 14px;
+        }
+
+        /* |User Main | Current| */
+        /* The current button - Fahrenheit or Celsius. */
+        .current > button{
+            font-size: 14px;
+        }
+
+        /* |display-forecast| */
+        .display-forecast{
+            font-size: 14px;
+        }
+
+        /* |display-hourly-forecast| */
+        .display-hourly-forecast{
+            font-size: 14px;
+        }
+    }
+}
