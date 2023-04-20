@@ -139,7 +139,7 @@ async function DisplayForecastData(forecastDay, forecastCondition, forecast, for
     // Fetch the forecast icons from each forecast day in the forecast condition object and return it as an array of responses.
     let index = 0;
     const forecastIconResponses = await Promise.all(
-        forecastCondition.map(item => fetch(`http:${item.icon}`))
+        forecastCondition.map(item => fetch(`https:${item.icon}`))
     );
 
     // Display the each forecast icon response in the forecast section. 
@@ -252,7 +252,7 @@ export async function DisplayHourlyForecastData(hourlyForecastDay){
 
     // Fetch the icon properties and return it as an array of responses.
     const hourlyIcon = await Promise.all(
-        hourlyConditionArray.map(item => fetch(`http:${item.icon}`))
+        hourlyConditionArray.map(item => fetch(`https:${item.icon}`))
     );
 
     // Display the hourly icon properties for the selected forecast day in the hourly forecast section. 
